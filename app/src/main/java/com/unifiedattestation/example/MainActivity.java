@@ -39,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        client.connect();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         client.disconnect();

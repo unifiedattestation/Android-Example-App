@@ -153,7 +153,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void status(String message) {
-        runOnUiThread(() -> statusText.setText(message));
+        runOnUiThread(() -> {
+            String existing = statusText.getText() != null ? statusText.getText().toString() : "";
+            if (existing.isEmpty()) {
+                statusText.setText(message);
+            } else {
+                statusText.setText(existing + "\n" + message);
+            }
+        });
     }
 
     private String canonicalRequestString() {
